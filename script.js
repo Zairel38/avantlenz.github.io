@@ -1,16 +1,6 @@
 function learnMore() {
     alert("Welcome to Avant-Lenz!");
 }
-function scrollToFeatures() {
-    document.getElementById("features").scrollIntoView({
-        behavior: "smooth"
-    });
-}
-function scrollToFeatures() {
-    document.getElementById("features").scrollIntoView({
-        behavior: "smooth"
-    });
-}
 
 /* Animate elements on load */
 window.onload = () => {
