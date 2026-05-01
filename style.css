@@ -131,3 +131,13 @@ footer {
     box-shadow: 0 0 20px #00e5ff;
     transform: scale(1.05);
 }
+body::before {
+    content: "";
+    position: fixed;
+    top: -200px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, #00e5ff33, transparent 60%);
+    z-index: -1;
+}
