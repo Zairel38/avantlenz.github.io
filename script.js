@@ -13,3 +13,19 @@ function sendMessage() {
         output.innerText = "Message sent successfully!";
     }
 }
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+
+        // Only apply to internal pages
+        if (href && !href.startsWith("#")) {
+            e.preventDefault();
+
+            document.body.classList.add("fade-out");
+
+            setTimeout(() => {
+                window.location.href = href;
+            }, 250);
+        }
+    });
+});
