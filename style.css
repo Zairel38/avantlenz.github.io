@@ -45,9 +45,8 @@ nav a:hover {
 }
 
 .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
+    background: red;
+}
 
     background-image: url("../images/hero-bg.jpg");
     background-size: cover;
