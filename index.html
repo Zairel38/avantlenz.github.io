@@ -21,7 +21,10 @@
 <section class="hero fade-in">
     <h1>See the Future.</h1>
     <p>AI + AR Glasses that enhance reality in real time.</p>
-    <button onclick="scrollToFeatures()">Explore</button>
+
+    <button onclick="document.querySelector('#features').scrollIntoView({ behavior: 'smooth' })">
+        Explore
+    </button>
 </section>
 
 <section id="features" class="section fade-in">
@@ -48,7 +51,7 @@
 <section id="about" class="section dark fade-in">
     <h2>About Avant-Lenz</h2>
     <p>
-        Avant-Lenz is a next-generation wearable tech company focused on merging AI with AR.
+        Avant-Lenz is a next-generation wearable tech company focused on merging AI with AR to enhance human experience.
     </p>
 </section>
 
@@ -127,11 +130,6 @@
 
     <input type="text" placeholder="Enter your email" style="padding:10px;">
     <button style="padding:10px;">Sign Up</button>
-</section>
-
-<section class="section fade-in">
-    <h2>Product Image</h2>
-    <img src="images/glasses.png" width="300">
 </section>
 
 <footer>
