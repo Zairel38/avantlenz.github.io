@@ -43,24 +43,21 @@ nav a {
     background-position: center;
     background-repeat: no-repeat;
 
-    /* makes image brighter + more vivid */
-    filter: brightness(1.15) contrast(1.1);
-
     z-index: 0;
 }
 
-/* LIGHTER OVERLAY (brighter look) */
+/* DARK OVERLAY (makes text readable) */
 .hero::after {
     content: "";
     position: absolute;
     inset: 0;
 
-    background: rgba(0, 0, 0, 0.22);
+    background: rgba(0, 0, 0, 0.55);
 
     z-index: 1;
 }
 
-/* TEXT ABOVE BACKGROUND */
+/* KEEP TEXT ABOVE BACKGROUND */
 .hero * {
     position: relative;
     z-index: 2;
