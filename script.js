@@ -1,15 +1,18 @@
 function learnMore() {
-    alert("Welcome to Avant-Lenz!");
+    document.querySelector("#about").scrollIntoView({
+        behavior: "smooth"
+    });
 }
 
-/* Animate elements on load */
-window.onload = () => {
-    const elements = document.querySelectorAll(".fade-in");
-
-    elements.forEach((el, index) => {
-        setTimeout(() => {
-            el.style.opacity = "1";
-            el.style.transform = "translateY(0)";
-        }, index * 200);
+// Scroll animation using Intersection Observer
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
     });
-};
+});
+
+document.querySelectorAll(".fade-in").forEach(el => {
+    observer.observe(el);
+});
