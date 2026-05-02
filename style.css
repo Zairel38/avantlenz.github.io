@@ -39,8 +39,34 @@ nav a:hover {
 .hero {
     text-align: center;
     padding: 120px 20px;
+    position: relative;
+    overflow: hidden;
 }
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
 
+    background-image: url("images/hero-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: 0;
+}
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.3);
+
+    z-index: 1;
+}
+.hero * {
+    position: relative;
+    z-index: 2;
+}
 .hero h1 {
     font-size: 60px;
     margin-bottom: 10px;
@@ -123,3 +149,4 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
+url("images/hero-bg.jpg")
