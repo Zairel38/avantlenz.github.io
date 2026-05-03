@@ -1,3 +1,4 @@
+
 /* GLOBAL */
 body {
     margin: 0;
@@ -6,7 +7,7 @@ body {
     color: white;
 
     opacity: 0;
-    animation: pageLoad 0.6s ease forwards;
+    animation: fadeIn 0.5s ease forwards;
 }
 
 /* HEADER */
@@ -23,10 +24,28 @@ header {
     backdrop-filter: blur(10px);
 }
 
+/* NAV */
 nav a {
     color: white;
     margin: 10px;
     text-decoration: none;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #00e5ff;
+}
+
+nav a.active {
+    color: #00e5ff;
+    border-bottom: 2px solid #00e5ff;
+}
+
+/* LOGO */
+.logo {
+    font-weight: bold;
+    font-size: 20px;
+    color: #00e5ff;
 }
 
 /* HERO */
@@ -38,7 +57,6 @@ nav a {
     overflow: hidden;
 }
 
-/* BACKGROUND IMAGE */
 .hero::before {
     content: "";
     position: absolute;
@@ -52,7 +70,6 @@ nav a {
     z-index: 0;
 }
 
-/* DARK OVERLAY (makes text readable) */
 .hero::after {
     content: "";
     position: absolute;
@@ -63,15 +80,33 @@ nav a {
     z-index: 1;
 }
 
-/* KEEP TEXT ABOVE BACKGROUND */
 .hero * {
     position: relative;
     z-index: 2;
 }
 
+.hero h1 {
+    font-size: 60px;
+    letter-spacing: 1px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #ccc;
+}
+
 /* SECTIONS */
 .section {
     padding: 50px;
+}
+
+.section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.section p {
+    color: #ccc;
 }
 
 /* GRID */
@@ -96,19 +131,7 @@ nav a {
     box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
-/* PAGE LOAD ANIMATION */
-@keyframes pageLoad {
-    to {
-        opacity: 1;
-    }
-}
-
-/* PAGE TRANSITION OUT */
-body.fade-out {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
+/* BUTTONS */
 button {
     padding: 12px 25px;
     background: #00e5ff;
@@ -123,18 +146,21 @@ button:hover {
     transform: scale(1.05);
     box-shadow: 0 0 15px #00e5ff;
 }
-nav a.active {
-    color: #00e5ff;
-    border-bottom: 2px solid #00e5ff;
-}
-.section h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
+
+/* FADE IN PAGE */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }
 
-.section p {
-    color: #ccc;
+/* PAGE TRANSITION OUT */
+body.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
+
+/* SCROLL ANIMATION */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -144,33 +170,4 @@ nav a.active {
 .fade-in.show {
     opacity: 1;
     transform: translateY(0);
-    
-}.hero h1 {
-    font-size: 60px;
-    letter-spacing: 1px;
-}
-
-.hero p {
-    font-size: 18px;
-    color: #ccc;
-}
-.logo {
-    font-weight: bold;
-    font-size: 20px;
-    color: #00e5ff;
-}
-body {
-    opacity: 0;
-    animation: fadeIn 0.5s ease forwards;
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
-body.fade-out {
-    opacity: 0;
-    transition: opacity 0.3s ease;
 }
