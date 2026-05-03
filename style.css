@@ -14,7 +14,13 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    background: black;
+    background: rgba(0,0,0,0.7);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    backdrop-filter: blur(10px);
 }
 
 nav a {
@@ -101,4 +107,19 @@ nav a {
 body.fade-out {
     opacity: 0;
     transition: opacity 0.3s ease;
+}
+
+button {
+    padding: 12px 25px;
+    background: #00e5ff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+    border-radius: 6px;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00e5ff;
 }
