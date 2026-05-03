@@ -79,3 +79,16 @@ function validateEmail() {
         msg.innerText = "Email submitted!";
     }
 }
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function (e) {
+        if (this.getAttribute("href").includes(".html")) {
+            e.preventDefault();
+
+            document.body.classList.add("fade-out");
+
+            setTimeout(() => {
+                window.location = this.href;
+            }, 250);
+        }
+    });
+});
