@@ -127,3 +127,35 @@ nav a.active {
     color: #00e5ff;
     border-bottom: 2px solid #00e5ff;
 }
+.section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.section p {
+    color: #ccc;
+}
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+    
+}.hero h1 {
+    font-size: 60px;
+    letter-spacing: 1px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #ccc;
+}
+.logo {
+    font-weight: bold;
+    font-size: 20px;
+    color: #00e5ff;
+}
