@@ -21,13 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// 🔹 Navigate to Products page
+// Navigate to Products page
 function goToProducts() {
     window.location.href = "products.html";
 }
 
 
-// 🔹 Contact form message sender (your original improved slightly)
+// Contact form message sender
 function sendMessage() {
     const nameInput = document.getElementById("name");
     const messageInput = document.getElementById("message");
@@ -46,7 +46,7 @@ function sendMessage() {
 }
 
 
-// 🔹 Pricing calculator (ADDED)
+// Pricing calculator
 function calculatePrice() {
     const qtyInput = document.getElementById("qty");
     const result = document.getElementById("priceResult");
@@ -64,7 +64,7 @@ function calculatePrice() {
 }
 
 
-// 🔹 Email validation (ADDED)
+// EMAIL VALIDATION (UPDATED MESSAGE)
 function validateEmail() {
     const emailInput = document.getElementById("email");
     const msg = document.getElementById("formMsg");
@@ -76,30 +76,7 @@ function validateEmail() {
     if (!email || !email.includes("@") || !email.includes(".")) {
         msg.innerText = "Enter a valid email.";
     } else {
-        msg.innerText = "Email submitted!";
+        msg.innerText = "Thank you for Signing up with Avant-Lenz!";
+        emailInput.value = "";
     }
 }
-document.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", function (e) {
-        if (this.getAttribute("href").includes(".html")) {
-            e.preventDefault();
-
-            document.body.classList.add("fade-out");
-
-            setTimeout(() => {
-                window.location = this.href;
-            }, 250);
-        }
-    });
-});
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-        }
-    });
-});
-
-document.querySelectorAll(".fade-in").forEach(el => {
-    observer.observe(el);
-});
