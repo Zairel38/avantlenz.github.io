@@ -171,3 +171,17 @@ body.fade-out {
     opacity: 1;
     transform: translateY(0);
 }
+.hero-img {
+    width: 320px;
+    max-width: 80%;
+
+    margin: 20px auto;
+    display: block;
+
+    border-radius: 12px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+
+    position: relative;
+    z-index: 2;
+}
