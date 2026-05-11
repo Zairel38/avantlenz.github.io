@@ -80,3 +80,23 @@ function validateEmail() {
         emailInput.value = "";
     }
 }
+
+
+// FADE-IN SCROLL ANIMATION
+const faders = document.querySelectorAll(".fade-in");
+
+const appearOnScroll = new IntersectionObserver((entries) => {
+
+    entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+
+    });
+
+});
+
+faders.forEach((fader) => {
+    appearOnScroll.observe(fader);
+});
