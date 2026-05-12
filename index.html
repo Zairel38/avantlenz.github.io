@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Avant-Lenz | Home</title>
+
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,33 +12,45 @@
 
 <header>
     <div class="logo">Avant-Lenz</div>
+
     <nav>
         <a href="index.html" class="active">Home</a>
         <a href="products.html">Products</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="login.html">Login</a>
     </nav>
 </header>
 
 <section class="hero">
+
     <h1>See the Future</h1>
     <p>AI + AR Glasses enhancing reality</p>
 
-    <!-- NEW IMAGE -->
+    <!-- IMAGE -->
     <img src="images/Meta-smart-glasses-1-scaled.jpg"
          alt="Meta Smart Glasses"
          class="hero-img">
 
+    <!-- USER DISPLAY -->
+    <h3 id="userDisplay"></h3>
+
     <button onclick="goToProducts()">Explore Products</button>
+
+    <button onclick="logout()">Logout</button>
+
 </section>
 
 <section class="section">
     <h2>Interactive Features</h2>
 
     <div class="grid">
+
         <div class="card">
             <h3>Pricing Calculator</h3>
             <input id="qty" type="number" placeholder="Enter quantity">
+            <br><br>
             <button onclick="calculatePrice()">Calculate</button>
             <p id="priceResult"></p>
         </div>
@@ -46,16 +58,16 @@
         <div class="card">
             <h3>Signup Form</h3>
             <input id="email" placeholder="Email">
+            <br><br>
             <button onclick="validateEmail()">Submit</button>
             <p id="formMsg"></p>
         </div>
+
     </div>
 </section>
 
+<!-- SCRIPT (must stay at bottom) -->
 <script src="script.js"></script>
+
 </body>
 </html>
-
-<h3 id="userDisplay"></h3>
-
-<button onclick="logout()">Logout</button>
