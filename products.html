@@ -45,3 +45,29 @@
 <script src="script.js"></script>
 </body>
 </html>
+<section class="section">
+    <h2>Checkout</h2>
+
+    <div class="card">
+
+        <h3>Selected Product</h3>
+        <p>Advanced AI Glasses ($1079 each)</p>
+
+        <div style="display:flex; align-items:center; gap:10px; justify-content:center; margin-top:10px;">
+
+            <button onclick="changeQty(-1)">−</button>
+
+            <span id="qtyDisplay">1</span>
+
+            <button onclick="changeQty(1)">+</button>
+
+        </div>
+
+        <br>
+
+        <p id="totalPrice">Total: $1079</p>
+
+        <button onclick="checkout()">Checkout</button>
+
+    </div>
+</section>
