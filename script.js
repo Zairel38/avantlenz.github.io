@@ -1,9 +1,13 @@
-// Run everything after the page fully loads
+
+// ===============================
+// PAGE LOAD + GLOBAL INIT
+// ===============================
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Page transition effect (your original, just wrapped safely)
+    // Smooth page transitions
     document.querySelectorAll("a").forEach(link => {
         link.addEventListener("click", function (e) {
+
             const href = this.getAttribute("href");
 
             if (href && !href.startsWith("#")) {
@@ -18,17 +22,44 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Fade-in scroll animation
+    const faders = document.querySelectorAll(".fade-in");
+
+    const appearOnScroll = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    });
+
+    faders.forEach(el => appearOnScroll.observe(el));
+
+    // Show logged-in user
+    const currentUser = localStorage.getItem("currentUser");
+    const userDisplay = document.getElementById("userDisplay");
+
+    if (userDisplay) {
+        userDisplay.innerText = currentUser
+            ? "Welcome, " + currentUser
+            : "Guest User";
+    }
 });
 
 
-// Navigate to Products page
+// ===============================
+// NAVIGATION
+// ===============================
 function goToProducts() {
     window.location.href = "products.html";
 }
 
 
-// Contact form message sender
+// ===============================
+// CONTACT FORM
+// ===============================
 function sendMessage() {
+
     const nameInput = document.getElementById("name");
     const messageInput = document.getElementById("message");
     const output = document.getElementById("contactMsg");
@@ -46,8 +77,11 @@ function sendMessage() {
 }
 
 
-// Pricing calculator
+// ===============================
+// PRICE CALCULATOR
+// ===============================
 function calculatePrice() {
+
     const qtyInput = document.getElementById("qty");
     const result = document.getElementById("priceResult");
 
@@ -58,14 +92,16 @@ function calculatePrice() {
     if (isNaN(qty) || qty <= 0) {
         result.innerText = "Enter a valid quantity.";
     } else {
-        const total = qty * 799;
-        result.innerText = "Total: $" + total;
+        result.innerText = "Total: $" + (qty * 799);
     }
 }
 
 
-// EMAIL VALIDATION (UPDATED MESSAGE)
+// ===============================
+// EMAIL VALIDATION
+// ===============================
 function validateEmail() {
+
     const emailInput = document.getElementById("email");
     const msg = document.getElementById("formMsg");
 
@@ -73,7 +109,7 @@ function validateEmail() {
 
     const email = emailInput.value.trim();
 
-    if (!email || !email.includes("@") || !email.includes(".")) {
+    if (!email.includes("@") || !email.includes(".")) {
         msg.innerText = "Enter a valid email.";
     } else {
         msg.innerText = "Thank you for Signing up with Avant-Lenz!";
@@ -82,55 +118,49 @@ function validateEmail() {
 }
 
 
-// FADE-IN SCROLL ANIMATION
-const faders = document.querySelectorAll(".fade-in");
-
-const appearOnScroll = new IntersectionObserver((entries) => {
-
-    entries.forEach((entry) => {
-
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-        }
-
-    });
-
-});
-
-faders.forEach((fader) => {
-    appearOnScroll.observe(fader);
-});
+// ===============================
 // SIGN UP SYSTEM
+// ===============================
 function signup() {
 
-    const username = document.getElementById("signupUsername").value.trim();
-    const email = document.getElementById("signupEmail").value.trim();
-    const password = document.getElementById("signupPassword").value.trim();
+    const username = document.getElementById("signupUsername");
+    const email = document.getElementById("signupEmail");
+    const password = document.getElementById("signupPassword");
     const msg = document.getElementById("signupMsg");
 
-    if (!username || !email || !password) {
+    if (!username || !email || !password || !msg) return;
+
+    if (!username.value || !email.value || !password.value) {
         msg.innerText = "Please fill all fields.";
         return;
     }
 
     const user = {
-        username,
-        email,
-        password
+        username: username.value.trim(),
+        email: email.value.trim(),
+        password: password.value.trim()
     };
 
     localStorage.setItem("avantUser", JSON.stringify(user));
 
     msg.innerText = "Account created successfully!";
+
+    setTimeout(() => {
+        window.location.href = "login.html";
+    }, 1000);
 }
 
 
+// ===============================
 // LOGIN SYSTEM
+// ===============================
 function login() {
 
-    const email = document.getElementById("loginEmail").value.trim();
-    const password = document.getElementById("loginPassword").value.trim();
+    const email = document.getElementById("loginEmail");
+    const password = document.getElementById("loginPassword");
     const msg = document.getElementById("loginMsg");
+
+    if (!email || !password || !msg) return;
 
     const savedUser = JSON.parse(localStorage.getItem("avantUser"));
 
@@ -139,9 +169,10 @@ function login() {
         return;
     }
 
-    if (email === savedUser.email && password === savedUser.password) {
-
-        localStorage.setItem("loggedIn", "true");
+    if (
+        email.value.trim() === savedUser.email &&
+        password.value.trim() === savedUser.password
+    ) {
         localStorage.setItem("currentUser", savedUser.username);
 
         msg.innerText = "Login successful!";
@@ -156,26 +187,11 @@ function login() {
 }
 
 
-// SHOW USERNAME
-window.addEventListener("DOMContentLoaded", () => {
-
-    const currentUser = localStorage.getItem("currentUser");
-
-    if (currentUser) {
-
-        const userDisplay = document.getElementById("userDisplay");
-
-        if (userDisplay) {
-            userDisplay.innerText = "Welcome, " + currentUser;
-        }
-    }
-});
-
-
+// ===============================
 // LOGOUT
+// ===============================
 function logout() {
 
-    localStorage.removeItem("loggedIn");
     localStorage.removeItem("currentUser");
 
     window.location.href = "login.html";
