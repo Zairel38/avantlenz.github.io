@@ -100,3 +100,83 @@ const appearOnScroll = new IntersectionObserver((entries) => {
 faders.forEach((fader) => {
     appearOnScroll.observe(fader);
 });
+// SIGN UP SYSTEM
+function signup() {
+
+    const username = document.getElementById("signupUsername").value.trim();
+    const email = document.getElementById("signupEmail").value.trim();
+    const password = document.getElementById("signupPassword").value.trim();
+    const msg = document.getElementById("signupMsg");
+
+    if (!username || !email || !password) {
+        msg.innerText = "Please fill all fields.";
+        return;
+    }
+
+    const user = {
+        username,
+        email,
+        password
+    };
+
+    localStorage.setItem("avantUser", JSON.stringify(user));
+
+    msg.innerText = "Account created successfully!";
+}
+
+
+// LOGIN SYSTEM
+function login() {
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
+    const msg = document.getElementById("loginMsg");
+
+    const savedUser = JSON.parse(localStorage.getItem("avantUser"));
+
+    if (!savedUser) {
+        msg.innerText = "No account found.";
+        return;
+    }
+
+    if (email === savedUser.email && password === savedUser.password) {
+
+        localStorage.setItem("loggedIn", "true");
+        localStorage.setItem("currentUser", savedUser.username);
+
+        msg.innerText = "Login successful!";
+
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 1000);
+
+    } else {
+        msg.innerText = "Invalid login information.";
+    }
+}
+
+
+// SHOW USERNAME
+window.addEventListener("DOMContentLoaded", () => {
+
+    const currentUser = localStorage.getItem("currentUser");
+
+    if (currentUser) {
+
+        const userDisplay = document.getElementById("userDisplay");
+
+        if (userDisplay) {
+            userDisplay.innerText = "Welcome, " + currentUser;
+        }
+    }
+});
+
+
+// LOGOUT
+function logout() {
+
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("currentUser");
+
+    window.location.href = "login.html";
+}
