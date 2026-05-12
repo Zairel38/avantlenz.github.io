@@ -196,3 +196,33 @@ function logout() {
 
     window.location.href = "login.html";
 }
+// ===============================
+// CHECKOUT SYSTEM
+// ===============================
+
+let quantity = 1;
+const pricePerItem = 1079;
+
+function updateCheckout() {
+    const qtyDisplay = document.getElementById("qtyDisplay");
+    const total = document.getElementById("totalPrice");
+
+    if (!qtyDisplay || !total) return;
+
+    qtyDisplay.innerText = quantity;
+
+    const totalPrice = quantity * pricePerItem;
+    total.innerText = "Total: $" + totalPrice;
+}
+
+function changeQty(amount) {
+    quantity += amount;
+
+    if (quantity < 1) quantity = 1;
+
+    updateCheckout();
+}
+
+function checkout() {
+    alert("Checkout complete! Total: $" + (quantity * pricePerItem));
+}
