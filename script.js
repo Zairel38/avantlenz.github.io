@@ -226,3 +226,71 @@ function changeQty(amount) {
 function checkout() {
     alert("Checkout complete! Total: $" + (quantity * pricePerItem));
 }
+
+// ===============================
+// PRODUCT SELECT
+// ===============================
+function selectProduct(name, price) {
+
+    const product = {
+        name: name,
+        price: price
+    };
+
+    localStorage.setItem("selectedProduct", JSON.stringify(product));
+
+    window.location.href = "checkout.html";
+}
+
+
+// ===============================
+// CHECKOUT SYSTEM
+// ===============================
+let qty = 1;
+let selected = null;
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    selected = JSON.parse(localStorage.getItem("selectedProduct"));
+
+    if (!selected) return;
+
+    const nameEl = document.getElementById("productName");
+    const priceEl = document.getElementById("productPrice");
+
+    if (nameEl) nameEl.innerText = selected.name;
+    if (priceEl) priceEl.innerText = "Price: $" + selected.price;
+
+    updateTotal();
+});
+
+function changeQty(amount) {
+
+    qty += amount;
+
+    if (qty < 1) qty = 1;
+
+    document.getElementById("qty").innerText = qty;
+
+    updateTotal();
+}
+
+function updateTotal() {
+
+    const totalEl = document.getElementById("total");
+
+    if (!selected || !totalEl) return;
+
+    const total = qty * selected.price;
+
+    totalEl.innerText = "Total: $" + total;
+}
+
+function placeOrder() {
+
+    alert("Order placed for " + selected.name + " x" + qty);
+
+    localStorage.removeItem("selectedProduct");
+
+    window.location.href = "index.html";
+}
