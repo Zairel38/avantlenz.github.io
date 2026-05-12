@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout - Avant-Lenz</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Avant-Lenz</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="section" style="text-align:center;">
+
+    <h2>Checkout</h2>
+
+    <div class="card">
+
+        <h3 id="productName">Loading...</h3>
+
+        <p id="productPrice"></p>
+
+        <div style="display:flex; justify-content:center; gap:10px; align-items:center;">
+            <button onclick="changeQty(-1)">−</button>
+            <span id="qty">1</span>
+            <button onclick="changeQty(1)">+</button>
+        </div>
+
+        <br>
+
+        <h3 id="total">Total</h3>
+
+        <br>
+
+        <button onclick="placeOrder()">Place Order</button>
+
+    </div>
+
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
